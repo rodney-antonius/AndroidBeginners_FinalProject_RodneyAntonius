@@ -16,7 +16,7 @@ import galileo.android.myflashcards.R;
  * Created by Agro on 10/04/2017.
  */
 
-public class AddFlashCardDialogFragment extends DialogFragment {
+public class FlashCardDialogFragment extends DialogFragment {
 
     // Use this instance of the interface to deliver action events
     private AddFlashCardDialogListener mListener;
@@ -56,7 +56,7 @@ public class AddFlashCardDialogFragment extends DialogFragment {
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Send the negative button event back to the host activity
-                        mListener.onDialogNegativeClick(AddFlashCardDialogFragment.this);
+                        mListener.onDialogNegativeClick(FlashCardDialogFragment.this);
                     }
                 });
         return builder.create();

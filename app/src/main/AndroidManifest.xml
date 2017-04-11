@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MyFlashCardsActivity">
+        <activity android:name=".activities.FlashCardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="galileo.android.myflashcards"
             android:name=".storage.MyFlashCardProvider"
-            android:exported="true" />
+            android:authorities="galileo.android.myflashcards"
+            android:exported="true"/>
+
+        <activity android:name=".activities.FlashCardDetailActivity">
+        </activity>
     </application>
 
 </manifest>

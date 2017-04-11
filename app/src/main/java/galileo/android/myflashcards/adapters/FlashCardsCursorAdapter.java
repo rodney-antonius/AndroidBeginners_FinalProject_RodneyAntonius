@@ -1,14 +1,18 @@
 package galileo.android.myflashcards.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import galileo.android.myflashcards.R;
+import galileo.android.myflashcards.activities.FlashCardDetailActivity;
+import galileo.android.myflashcards.model.FlashCard;
 import galileo.android.myflashcards.storage.MyFlashCardsContract.FlashCardEntry;
 
 /**
@@ -47,13 +51,15 @@ public class FlashCardsCursorAdapter extends RecyclerView.Adapter<FlashCardsCurs
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         private TextView questionTextView;
         private int questionId = -1;
 
         public ViewHolder(View view) {
             super(view);
             questionTextView = (TextView) view.findViewById(R.id.question_text_view);
+            view.setOnClickListener(this);
         }
 
         private void bindView(Cursor cursor) {
@@ -63,6 +69,17 @@ public class FlashCardsCursorAdapter extends RecyclerView.Adapter<FlashCardsCurs
         }
 
 
+        @Override
+        public void onClick(View v) {
+            mCursor.moveToPosition(getAdapterPosition());
+            String question = mCursor.getString(mCursor.getColumnIndex(FlashCardEntry.COLUMN_QUESTION));
+            String answer = mCursor.getString(mCursor.getColumnIndex(FlashCardEntry.COLUMN_ANSWER));
+
+            FlashCard flashCard = new FlashCard(question, answer);
+
+            Intent intent = FlashCardDetailActivity.newIntent(mContext, flashCard);
+            mContext.startActivity(intent);
+        }
     }
 
 }

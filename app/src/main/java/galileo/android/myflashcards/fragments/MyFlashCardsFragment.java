@@ -1,8 +1,11 @@
 package galileo.android.myflashcards.fragments;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -55,6 +58,16 @@ public class MyFlashCardsFragment extends Fragment
 
         mCursorAdapter = new FlashCardsCursorAdapter(null, getActivity());
         mFlashCardsRecyclerView.setAdapter(mCursorAdapter);
+
+        FloatingActionButton addFlashCardButton =
+                (FloatingActionButton) view.findViewById(R.id.add_new_card_button);
+        addFlashCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddFlashCardDialogFragment dialogFragment = new AddFlashCardDialogFragment();
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "addFlashCard");
+            }
+        });
 
         getActivity().getSupportLoaderManager().initLoader(0, null, this);
 

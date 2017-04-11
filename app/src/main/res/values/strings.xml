@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MyFlashCards</string>
     <string name="notification_frequency">notification frequency</string>
+    <string name="type_your_question">Type your question</string>
+    <string name="type_your_answer">Type your answer</string>
+    <string name="add_new_flash_card">Add New Flash Card</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
 </resources>

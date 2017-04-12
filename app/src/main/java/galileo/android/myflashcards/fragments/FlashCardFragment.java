@@ -16,12 +16,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 
 import galileo.android.myflashcards.R;
+import galileo.android.myflashcards.activities.SettingsActivity;
 import galileo.android.myflashcards.adapters.FlashCardsCursorAdapter;
 import galileo.android.myflashcards.model.FlashCard;
 import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
@@ -94,6 +96,16 @@ public class FlashCardFragment extends Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.flash_card_fragment_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.notification_frequency:
+                startActivity(SettingsActivity.newIntent(getActivity()));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -9,25 +9,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.FlashCardActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
+        <activity
+            android:name=".activities.FlashCardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <provider
             android:name=".storage.FlashCardProvider"
             android:authorities="galileo.android.myflashcards"
             android:exported="true"/>
-        <activity android:name=".activities.FlashCardDetailActivity"
-                  android:screenOrientation="portrait"
-                  android:configChanges="orientation|keyboardHidden">
+
+        <activity
+            android:name=".activities.FlashCardDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activities.FlashCardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="galileo.android.myflashcards.activities.FlashCardActivity"/>
         </activity>
-        <service android:name=".service.StudyReminderJobService"
-                 android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".service.StudyReminderJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activities.FlashCardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="galileo.android.myflashcards.activities.FlashCardActivity"/>
+        </activity>
     </application>
 
 </manifest>

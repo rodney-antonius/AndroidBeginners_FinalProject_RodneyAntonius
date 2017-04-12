@@ -1,11 +1,14 @@
 package galileo.android.myflashcards.activities;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.SharedPreferencesCompat;
 import android.util.Log;
 
-import galileo.android.myflashcards.SingleFragmentActivity;
 import galileo.android.myflashcards.fragments.FlashCardDialogFragment;
 import galileo.android.myflashcards.fragments.FlashCardFragment;
 import galileo.android.myflashcards.service.StudyReminderJobService;
@@ -16,16 +19,25 @@ public class FlashCardActivity extends SingleFragmentActivity
 
     private static final String TAG = "FlashCardActivity";
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        StudyReminderJobService.setJobScheduler(this, false);
+    public static boolean isNotificationsOn(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getBoolean(key, true);
+    }
+
+    public static int getReminderRepeatingTimeInterval(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return Integer.parseInt(preferences.getString(key, "180"));
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        StudyReminderJobService.setJobScheduler(this, true);
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (isNotificationsOn(SettingsActivity.NotificationPreferenceFragment.NOTIFICATION_ON_PREF, this)) {
+            StudyReminderJobService.startJob(this);
+        } else {
+            StudyReminderJobService.stopJob(this);
+        }
     }
 
     @Override

@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 
 import galileo.android.myflashcards.R;
 import galileo.android.myflashcards.activities.FlashCardActivity;
+import galileo.android.myflashcards.activities.SettingsActivity;
+import galileo.android.myflashcards.model.FlashCard;
 
 /**
  * Created by Agro on 11/04/2017.
@@ -27,7 +29,6 @@ public class StudyReminderJobService extends JobService {
 
     private static final String TAG = "StudyReminderJobService";
     public static final int REMINDER_JOB_ID = 1;
-    public static final long REMINDER_INTERVAL_MS = TimeUnit.HOURS.toMillis(2);
 
     @Override
     public boolean onStartJob(JobParameters params) {
@@ -36,10 +37,10 @@ public class StudyReminderJobService extends JobService {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_mood_black_24dp)
-                .setContentTitle(getString(R.string.study_reminder_content_title))
-                .setContentText(getString(R.string.study_reminder_content_text))
-                .setAutoCancel(true);
+                        .setSmallIcon(R.drawable.ic_mood_black_24dp)
+                        .setContentTitle(getString(R.string.study_reminder_content_title))
+                        .setContentText(getString(R.string.study_reminder_content_text))
+                        .setAutoCancel(true);
 
         Intent resultIntent = new Intent(this, FlashCardActivity.class);
 
@@ -66,21 +67,36 @@ public class StudyReminderJobService extends JobService {
         return false;
     }
 
-    public static void setJobScheduler(Context context, boolean turnOn) {
+    public static void startJob(Context context) {
 
         JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
 
-        if (turnOn) {
-            Log.d(TAG, "Turn on");
-            JobInfo.Builder jobInfo = new JobInfo.Builder(REMINDER_JOB_ID,
-                    new ComponentName(context, StudyReminderJobService.class));
-            jobInfo.setPeriodic(REMINDER_INTERVAL_MS);
+        final int REPEATING_INTERVAL_MIN = FlashCardActivity.getReminderRepeatingTimeInterval(
+                SettingsActivity.DataSyncPreferenceFragment.UPDATE_TIME_INTERVAL_PREF,
+                context
+        );
 
-            jobScheduler.schedule(jobInfo.build());
-        } else {
-            Log.d(TAG, "Turn off");
-            jobScheduler.cancel(REMINDER_JOB_ID);
-        }
+        Log.d(TAG, "Repeating interval minutes: " + REPEATING_INTERVAL_MIN);
 
+        final long REMINDER_INTERVAL_MS = TimeUnit.MINUTES.toMillis(REPEATING_INTERVAL_MIN);
+
+        Log.d(TAG, "Repeating interval milliseconds: " + REMINDER_INTERVAL_MS);
+
+        Log.d(TAG, "Starting Job");
+
+        JobInfo.Builder jobInfo = new JobInfo.Builder(REMINDER_JOB_ID,
+                new ComponentName(context, StudyReminderJobService.class));
+        jobInfo.setPeriodic(REMINDER_INTERVAL_MS);
+
+        jobScheduler.schedule(jobInfo.build());
+    }
+
+    public static void stopJob(Context context) {
+
+        JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+
+        Log.d(TAG, "Stopping job");
+
+        jobScheduler.cancel(REMINDER_JOB_ID);
     }
 }

@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
  * Created by Agro on 10/04/2017.
  */
 
-public class MyFlashCardsContract {
+public class FlashCardsContract {
     // The "Content authority" is a name for the entire content provider, similar to the
     // relationship between a domain name and its website.  A convenient string to use for the
     // content authority is the package name for the app, which is guaranteed to be unique on the

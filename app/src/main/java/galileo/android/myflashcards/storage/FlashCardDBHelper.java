@@ -4,20 +4,20 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import galileo.android.myflashcards.storage.MyFlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
 
 /**
  * Created by Agro on 10/04/2017.
  */
 
-public class MyFlashCardDBHelper extends SQLiteOpenHelper {
+public class FlashCardDBHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
     private static final int DATABASE_VERSION = 1;
 
     public static final String DATABASE_NAME = "myflashcard.db";
 
-    public MyFlashCardDBHelper(Context context) {
+    public FlashCardDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

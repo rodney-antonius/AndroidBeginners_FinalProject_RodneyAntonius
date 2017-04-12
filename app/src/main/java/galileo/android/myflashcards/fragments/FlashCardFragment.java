@@ -24,7 +24,7 @@ import com.google.gson.Gson;
 import galileo.android.myflashcards.R;
 import galileo.android.myflashcards.adapters.FlashCardsCursorAdapter;
 import galileo.android.myflashcards.model.FlashCard;
-import galileo.android.myflashcards.storage.MyFlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
 import galileo.android.myflashcards.util.JSONReader;
 
 /**

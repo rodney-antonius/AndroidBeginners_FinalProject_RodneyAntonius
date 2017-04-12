@@ -8,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import galileo.android.myflashcards.R;
 import galileo.android.myflashcards.activities.FlashCardDetailActivity;
 import galileo.android.myflashcards.model.FlashCard;
-import galileo.android.myflashcards.storage.MyFlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
 
 /**
  * Created by Agro on 10/04/2017.

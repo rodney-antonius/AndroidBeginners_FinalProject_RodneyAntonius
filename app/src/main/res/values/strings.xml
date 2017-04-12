@@ -6,4 +6,6 @@
     <string name="add_new_flash_card">Add New Flash Card</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
+    <string name="study_reminder_content_title">Study Reminder</string>
+    <string name="study_reminder_content_text">Do not forget to review some of your flash card</string>
 </resources>

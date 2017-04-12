@@ -8,20 +8,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-import galileo.android.myflashcards.storage.MyFlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
 
 /**
  * Created by Agro on 10/04/2017.
  */
 
-public class MyFlashCardProvider extends ContentProvider {
+public class FlashCardProvider extends ContentProvider {
 
     private static final int FLASH_CARD = 100;
     private static final int FLASH_CARD_ID = 101;
 
     // The URI Matcher used by this content provider.
     private static final UriMatcher sUriMatcher = buildUriMatcher();
-    private MyFlashCardDBHelper mOpenHelper;
+    private FlashCardDBHelper mOpenHelper;
 
     private static UriMatcher buildUriMatcher() {
         // I know what you're thinking.  Why create a UriMatcher when you can use regular
@@ -31,19 +31,19 @@ public class MyFlashCardProvider extends ContentProvider {
         // found.  The code passed into the constructor represents the code to return for the root
         // URI.  It's common to use NO_MATCH as the code for this case.
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
-        final String authority = MyFlashCardsContract.CONTENT_AUTHORITY;
+        final String authority = FlashCardsContract.CONTENT_AUTHORITY;
 
         // For each type of URI you want to add, create a corresponding code.
 
-        matcher.addURI(authority, MyFlashCardsContract.PATH_FLASH_CARD, FLASH_CARD);
-        matcher.addURI(authority, MyFlashCardsContract.PATH_FLASH_CARD + "/#", FLASH_CARD_ID);
+        matcher.addURI(authority, FlashCardsContract.PATH_FLASH_CARD, FLASH_CARD);
+        matcher.addURI(authority, FlashCardsContract.PATH_FLASH_CARD + "/#", FLASH_CARD_ID);
 
         return matcher;
     }
 
     @Override
     public boolean onCreate() {
-        mOpenHelper = new MyFlashCardDBHelper(getContext());
+        mOpenHelper = new FlashCardDBHelper(getContext());
         return true;
     }
 

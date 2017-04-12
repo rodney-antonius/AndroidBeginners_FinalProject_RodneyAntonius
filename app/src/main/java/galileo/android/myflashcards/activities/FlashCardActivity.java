@@ -8,12 +8,25 @@ import android.util.Log;
 import galileo.android.myflashcards.SingleFragmentActivity;
 import galileo.android.myflashcards.fragments.FlashCardDialogFragment;
 import galileo.android.myflashcards.fragments.FlashCardFragment;
-import galileo.android.myflashcards.storage.MyFlashCardsContract;
+import galileo.android.myflashcards.service.StudyReminderJobService;
+import galileo.android.myflashcards.storage.FlashCardsContract;
 
 public class FlashCardActivity extends SingleFragmentActivity
         implements FlashCardDialogFragment.AddFlashCardDialogListener {
 
     private static final String TAG = "FlashCardActivity";
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StudyReminderJobService.setJobScheduler(this, false);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        StudyReminderJobService.setJobScheduler(this, true);
+    }
 
     @Override
     public Fragment createFragment() {
@@ -22,7 +35,7 @@ public class FlashCardActivity extends SingleFragmentActivity
 
     @Override
     public void onDialogPositiveClick(String question, String answer) {
-        getContentResolver().insert(MyFlashCardsContract.FlashCardEntry.CONTENT_URI,
+        getContentResolver().insert(FlashCardsContract.FlashCardEntry.CONTENT_URI,
                 getFlashCardContentValues(question, answer));
         Log.d(TAG, "New flash card added");
     }
@@ -35,8 +48,8 @@ public class FlashCardActivity extends SingleFragmentActivity
     private ContentValues getFlashCardContentValues(String question, String answer) {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(MyFlashCardsContract.FlashCardEntry.COLUMN_QUESTION, question);
-        contentValues.put(MyFlashCardsContract.FlashCardEntry.COLUMN_ANSWER, answer);
+        contentValues.put(FlashCardsContract.FlashCardEntry.COLUMN_QUESTION, question);
+        contentValues.put(FlashCardsContract.FlashCardEntry.COLUMN_ANSWER, answer);
 
         return contentValues;
     }

@@ -87,12 +87,6 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        StudyReminderJobService.stopJob(this);
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         getDelegate().onDestroy();

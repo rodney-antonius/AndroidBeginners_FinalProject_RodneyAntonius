@@ -26,7 +26,14 @@ public class FlashCardActivity extends SingleFragmentActivity
 
     public static int getReminderRepeatingTimeInterval(String key, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        // 180 minutes as default
         return Integer.parseInt(preferences.getString(key, "180"));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StudyReminderJobService.stopJob(this);
     }
 
     @Override

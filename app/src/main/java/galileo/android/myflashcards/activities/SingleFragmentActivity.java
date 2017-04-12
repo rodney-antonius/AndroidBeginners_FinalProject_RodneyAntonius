@@ -38,9 +38,4 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        StudyReminderJobService.stopJob(this);
-    }
 }

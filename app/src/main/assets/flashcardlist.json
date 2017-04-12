@@ -1,5 +1,5 @@
 [
-  {"mQuestion": "What is an Activity?", "mAnswer": "Visual Structure for a user interface"},
-  {"mQuestion": "What is a Fragment?", "mAnswer": "Portion of reusable screen used by an activity"},
-  {"mQuestion": "What is an AsyncTask?", "mAnswer": "A class to ease background operation"}
+  {"mQuestion": "What is activity?", "mAnswer": "Activity is like a frame or window in java that represents GUI."},
+  {"mQuestion": "What is intent?", "mAnswer": "It is a kind of message or information that is passed to the components."},
+  {"mQuestion": "What is the name of database used in android?", "mAnswer": "SQLite."}
 ]

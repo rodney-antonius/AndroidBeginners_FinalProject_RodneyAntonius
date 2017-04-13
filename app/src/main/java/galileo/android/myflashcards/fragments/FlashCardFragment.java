@@ -112,7 +112,7 @@ public class FlashCardFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_my_flash_cards, container, false);
+        View view = inflater.inflate(R.layout.fragment_flash_card, container, false);
 
         mFlashCardsRecyclerView = (RecyclerView) view.findViewById(R.id.flash_cards_recycler_view);
         mFlashCardsRecyclerView.setHasFixedSize(true);

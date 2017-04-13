@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_margin"
+    android:orientation="vertical"
     tools:context="galileo.android.myflashcards.activities.FlashCardDetailActivity">
 
     <TextView
         android:id="@+id/question_text_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="72dp"
+        android:layout_height="140dp"
         android:background="@android:color/holo_purple"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
         tools:text="What is love?"/>
 
     <TextView
-        android:gravity="center"
         android:id="@+id/answer_text_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="96dp"
+        android:layout_height="340dp"
+        android:background="@android:color/holo_orange_light"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
-        android:background="@android:color/holo_orange_light"
         tools:text="Baby, don't hurt. no more!"/>
 
 </LinearLayout>

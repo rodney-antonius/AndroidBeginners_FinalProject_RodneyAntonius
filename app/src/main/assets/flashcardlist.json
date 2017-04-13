@@ -1,5 +1,5 @@
 [
-  {"mQuestion": "What is activity?", "mAnswer": "Activity is like a frame or window in java that represents GUI."},
-  {"mQuestion": "What is intent?", "mAnswer": "It is a kind of message or information that is passed to the components."},
-  {"mQuestion": "What is the name of database used in android?", "mAnswer": "SQLite."}
+  {"mQuestion": "What is an activity?", "mAnswer": "An Activity is like a frame or window in java that represents GUI."},
+  {"mQuestion": "What is an intent?", "mAnswer": "It is a kind of message or information that is passed to the components."},
+  {"mQuestion": "What is the name of the database used in android?", "mAnswer": "SQLite."}
 ]

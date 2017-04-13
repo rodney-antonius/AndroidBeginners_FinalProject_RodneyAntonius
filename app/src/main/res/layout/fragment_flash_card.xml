@@ -2,21 +2,21 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_margin="@dimen/activity_margin">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/flash_cards_recycler_view"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_new_card_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        app:theme="@style/Base.Widget.AppCompat.ImageButton"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:src="@drawable/ic_add_new_flash_card"/>
 
 </FrameLayout>

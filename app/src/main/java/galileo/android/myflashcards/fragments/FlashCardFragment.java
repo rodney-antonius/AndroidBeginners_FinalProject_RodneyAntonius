@@ -13,6 +13,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -58,6 +59,7 @@ public class FlashCardFragment extends Fragment
             super.onPreExecute();
             mProgressDialog.setMessage("Loading Flash Cards ...");
             mProgressDialog.show();
+            Log.d(TAG, "Preparing to load flash cards from json ...");
         }
 
         @Override
@@ -75,6 +77,8 @@ public class FlashCardFragment extends Fragment
                 getActivity().getContentResolver().insert(FlashCardEntry.CONTENT_URI, values);
             }
 
+            Log.d(TAG, "Loading flash cards from json ...");
+
             return null;
         }
 
@@ -83,6 +87,7 @@ public class FlashCardFragment extends Fragment
             super.onPostExecute(aVoid);
             mCursorAdapter.notifyDataSetChanged();
             mProgressDialog.dismiss();
+            Log.d(TAG, "Flash cards loaded successfully!");
         }
     }
 
@@ -138,15 +143,20 @@ public class FlashCardFragment extends Fragment
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Log.d(TAG, "Creating the loader");
         return new CursorLoader(getActivity(), FlashCardEntry.CONTENT_URI, null, null, null, null);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        Log.d(TAG, "Loader finished");
+        // load the 'loaded' loader
+        mCursorAdapter.swapCursor(data);
+        // if there is no data, fetch initial data from json
         if (data.getCount() == 0) {
             new JSONLoaderAsyncTask().execute();
         }
-        mCursorAdapter.swapCursor(data);
+
     }
 
     @Override

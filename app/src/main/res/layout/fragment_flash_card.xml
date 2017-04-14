@@ -7,8 +7,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/flash_cards_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="top"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_new_card_button"

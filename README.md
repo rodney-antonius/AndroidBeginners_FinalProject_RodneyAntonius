@@ -1,5 +1,4 @@
-<snippet>
-  <content><![CDATA[
+<![CDATA[
 # ${1:My Flash Cards}
 When you are preparing for an exam, a common technique is to study using study-cards (Flash cards). On these cards, a question is written on one side and the answer on the other. This project is part of the edx micromasters program Android Development For Beginners final project.
 ## Installation
@@ -18,6 +17,4 @@ Final Project for Android Development For Beginners Edx Micromasters
 Galileo/Edx for making this course possible
 ## License
 MIT license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
+]]>

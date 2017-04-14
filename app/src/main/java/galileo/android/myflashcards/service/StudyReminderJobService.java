@@ -37,7 +37,7 @@ public class StudyReminderJobService extends JobService {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_mood_black_24dp)
+                        .setSmallIcon(R.drawable.ic_stat_note)
                         .setContentTitle(getString(R.string.study_reminder_content_title))
                         .setContentText(getString(R.string.study_reminder_content_text))
                         .setAutoCancel(true);

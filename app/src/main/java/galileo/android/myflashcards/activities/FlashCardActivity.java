@@ -4,10 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.View;
 
+import galileo.android.myflashcards.R;
 import galileo.android.myflashcards.fragments.FlashCardDialogFragment;
 import galileo.android.myflashcards.fragments.FlashCardFragment;
 import galileo.android.myflashcards.service.StudyReminderJobService;
@@ -55,6 +58,16 @@ public class FlashCardActivity extends SingleFragmentActivity
     public void onDialogPositiveClick(String question, String answer) {
         getContentResolver().insert(FlashCardContract.FlashCardEntry.CONTENT_URI,
                 getFlashCardContentValues(question, answer));
+        Snackbar.make(findViewById(android.R.id.content), "New card created!", Snackbar.LENGTH_LONG)
+                .setAction("Close", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
+                .show();
+
         Log.d(TAG, "New flash card added");
     }
 

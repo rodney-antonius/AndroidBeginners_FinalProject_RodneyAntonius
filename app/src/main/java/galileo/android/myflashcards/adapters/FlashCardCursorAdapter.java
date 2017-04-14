@@ -12,18 +12,18 @@ import android.widget.TextView;
 import galileo.android.myflashcards.R;
 import galileo.android.myflashcards.activities.FlashCardDetailActivity;
 import galileo.android.myflashcards.model.FlashCard;
-import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardContract.FlashCardEntry;
 
 /**
  * Created by Agro on 10/04/2017.
  */
 
-public class FlashCardsCursorAdapter extends RecyclerView.Adapter<FlashCardsCursorAdapter.ViewHolder> {
+public class FlashCardCursorAdapter extends RecyclerView.Adapter<FlashCardCursorAdapter.ViewHolder> {
 
     private Cursor mCursor;
     private Context mContext;
 
-    public FlashCardsCursorAdapter(Cursor c, Context context) {
+    public FlashCardCursorAdapter(Cursor c, Context context) {
         mCursor = c;
         mContext = context;
     }

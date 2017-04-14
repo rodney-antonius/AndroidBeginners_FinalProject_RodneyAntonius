@@ -76,19 +76,17 @@ public class StudyReminderJobService extends JobService {
                 context
         );
 
-        Log.d(TAG, "Repeating interval minutes: " + REPEATING_INTERVAL_MIN);
-
         final long REMINDER_INTERVAL_MS = TimeUnit.MINUTES.toMillis(REPEATING_INTERVAL_MIN);
 
-        Log.d(TAG, "Repeating interval milliseconds: " + REMINDER_INTERVAL_MS);
+        Log.d(TAG, "Starting job from " + REPEATING_INTERVAL_MIN + " minutes and " + REMINDER_INTERVAL_MS + " milliseconds");
 
-        Log.d(TAG, "Starting Job");
+        JobInfo jobInfo = new JobInfo.Builder(REMINDER_JOB_ID,
+                new ComponentName(context, StudyReminderJobService.class))
+                .setRequiresDeviceIdle(true)
+                .setPeriodic(REMINDER_INTERVAL_MS)
+                .build();
 
-        JobInfo.Builder jobInfo = new JobInfo.Builder(REMINDER_JOB_ID,
-                new ComponentName(context, StudyReminderJobService.class));
-        jobInfo.setPeriodic(REMINDER_INTERVAL_MS);
-
-        jobScheduler.schedule(jobInfo.build());
+        jobScheduler.schedule(jobInfo);
     }
 
     public static void stopJob(Context context) {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardContract.FlashCardEntry;
 
 /**
  * Created by Agro on 10/04/2017.

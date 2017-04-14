@@ -29,8 +29,8 @@
             android:name=".activities.FlashCardDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/card_detail_name"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".activities.FlashCardActivity">
+            android:parentActivityName=".activities.FlashCardActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="galileo.android.myflashcards.activities.FlashCardActivity"/>
@@ -42,14 +42,22 @@
 
         <activity
             android:name=".activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".activities.FlashCardActivity">
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activities.FlashCardActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="galileo.android.myflashcards.activities.FlashCardActivity"/>
         </activity>
+
+        <receiver android:name=".widget.WidgetFlashCardProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/widget_info" />
+        </receiver>
     </application>
 
 </manifest>

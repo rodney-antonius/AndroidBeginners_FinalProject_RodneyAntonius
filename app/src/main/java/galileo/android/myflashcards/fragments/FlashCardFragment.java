@@ -24,9 +24,9 @@ import com.google.gson.Gson;
 
 import galileo.android.myflashcards.R;
 import galileo.android.myflashcards.activities.SettingsActivity;
-import galileo.android.myflashcards.adapters.FlashCardsCursorAdapter;
+import galileo.android.myflashcards.adapters.FlashCardCursorAdapter;
 import galileo.android.myflashcards.model.FlashCard;
-import galileo.android.myflashcards.storage.FlashCardsContract.FlashCardEntry;
+import galileo.android.myflashcards.storage.FlashCardContract.FlashCardEntry;
 import galileo.android.myflashcards.util.JSONReader;
 
 /**
@@ -39,7 +39,7 @@ public class FlashCardFragment extends Fragment
     private static final String TAG = "FlashCardFragment";
 
     private RecyclerView mFlashCardsRecyclerView;
-    private FlashCardsCursorAdapter mCursorAdapter;
+    private FlashCardCursorAdapter mCursorAdapter;
 
     public static FlashCardFragment newInstance() {
         return new FlashCardFragment();
@@ -118,7 +118,7 @@ public class FlashCardFragment extends Fragment
         mFlashCardsRecyclerView.setHasFixedSize(true);
         mFlashCardsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mCursorAdapter = new FlashCardsCursorAdapter(null, getActivity());
+        mCursorAdapter = new FlashCardCursorAdapter(null, getActivity());
         mFlashCardsRecyclerView.setAdapter(mCursorAdapter);
 
         FloatingActionButton addFlashCardButton =

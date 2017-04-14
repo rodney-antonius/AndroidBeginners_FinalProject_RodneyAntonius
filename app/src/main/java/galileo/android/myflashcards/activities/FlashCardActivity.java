@@ -6,13 +6,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.SharedPreferencesCompat;
 import android.util.Log;
 
 import galileo.android.myflashcards.fragments.FlashCardDialogFragment;
 import galileo.android.myflashcards.fragments.FlashCardFragment;
 import galileo.android.myflashcards.service.StudyReminderJobService;
-import galileo.android.myflashcards.storage.FlashCardsContract;
+import galileo.android.myflashcards.storage.FlashCardContract;
 
 public class FlashCardActivity extends SingleFragmentActivity
         implements FlashCardDialogFragment.AddFlashCardDialogListener {
@@ -54,7 +53,7 @@ public class FlashCardActivity extends SingleFragmentActivity
 
     @Override
     public void onDialogPositiveClick(String question, String answer) {
-        getContentResolver().insert(FlashCardsContract.FlashCardEntry.CONTENT_URI,
+        getContentResolver().insert(FlashCardContract.FlashCardEntry.CONTENT_URI,
                 getFlashCardContentValues(question, answer));
         Log.d(TAG, "New flash card added");
     }
@@ -67,8 +66,8 @@ public class FlashCardActivity extends SingleFragmentActivity
     private ContentValues getFlashCardContentValues(String question, String answer) {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(FlashCardsContract.FlashCardEntry.COLUMN_QUESTION, question);
-        contentValues.put(FlashCardsContract.FlashCardEntry.COLUMN_ANSWER, answer);
+        contentValues.put(FlashCardContract.FlashCardEntry.COLUMN_QUESTION, question);
+        contentValues.put(FlashCardContract.FlashCardEntry.COLUMN_ANSWER, answer);
 
         return contentValues;
     }

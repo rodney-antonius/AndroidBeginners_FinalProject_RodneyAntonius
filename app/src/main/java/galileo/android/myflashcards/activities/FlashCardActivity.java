@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.text.TextUtilsCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -56,19 +58,35 @@ public class FlashCardActivity extends SingleFragmentActivity
 
     @Override
     public void onDialogPositiveClick(String question, String answer) {
-        getContentResolver().insert(FlashCardContract.FlashCardEntry.CONTENT_URI,
-                getFlashCardContentValues(question, answer));
-        Snackbar.make(findViewById(android.R.id.content), "New card created!", Snackbar.LENGTH_LONG)
-                .setAction("Close", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+        if (!TextUtils.isEmpty(question) && !TextUtils.isEmpty(answer)) {
 
-                    }
-                })
-                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
-                .show();
+            getContentResolver().insert(FlashCardContract.FlashCardEntry.CONTENT_URI,
+                    getFlashCardContentValues(question, answer));
 
-        Log.d(TAG, "New flash card added");
+            Snackbar.make(findViewById(android.R.id.content), R.string.card_created_answer, Snackbar.LENGTH_LONG)
+                    .setAction("Close", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.red))
+                    .show();
+            Log.d(TAG, "New flash card added");
+        } else {
+            Snackbar.make(findViewById(android.R.id.content), R.string.card_empty_answer, Snackbar.LENGTH_LONG)
+                    .setAction("Close", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    })
+                    .setActionTextColor(getResources().getColor(R.color.red))
+                    .show();
+            Log.d(TAG, "Empty fields");
+        }
+
+
     }
 
     @Override

@@ -82,4 +82,6 @@
     <string name="card_detail_name">Card detail</string>
     <string name="next_question">Next Question</string>
     <string name="see_answer">See Answer</string>
+    <string name="card_empty_answer">Question or answer field empty</string>
+    <string name="card_created_answer">New card created!</string>
 </resources>

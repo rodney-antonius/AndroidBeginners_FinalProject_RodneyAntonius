@@ -1,4 +1,4 @@
-# My Flash Cards
+.# My Flash Cards
 
 When you are preparing for an exam, a common technique is to study using study-cards (Flash cards). On these cards, a question is written on one side and the answer on the other. This project is part of the edx micromasters program Android Development For Beginners final project.
 
@@ -8,8 +8,7 @@ Fork this repo from your Android Studio and Run, it only runs in lollipop+
 
 ## Usage
 
-Because one of the requirements to accomplish the project was to use a Job Scheduler, the app will only work on Android Lollipop+
-Notifications will only show up if they are activated and the device is x minutes idle.
+Because one of the requirements to accomplish the project was to use a Job Scheduler, the app will only work on Android Lollipop and higher. Notifications will only show up if they are activated and the device is x minutes idle.
 
 ## Contributing
 

@@ -8,7 +8,8 @@ Fork this repo from your Android Studio and Run, it only runs in lollipop+
 
 ## Usage
 
-Because one of the requirements to accomplish the project was to use a Job Scheduler, the app will only work on Android Lollipop+ 
+Because one of the requirements to accomplish the project was to use a Job Scheduler, the app will only work on Android Lollipop+
+Notifications will only show up if they are activated and the device is x minutes idle.
 
 ## Contributing
 

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Agro on 11/04/2017.
  */
 
-public class FlashCard implements Serializable{
+public class FlashCard implements Serializable {
     private String mQuestion;
     private String mAnswer;
 

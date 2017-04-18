@@ -29,7 +29,7 @@ public class FlashCardDBHelper extends SQLiteOpenHelper {
                 FlashCardEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 FlashCardEntry.COLUMN_QUESTION + " TEXT NOT NULL, " +
                 FlashCardEntry.COLUMN_ANSWER + " TEXT NOT NULL, " +
-                "UNIQUE (" + FlashCardEntry.COLUMN_QUESTION+ ", " + FlashCardEntry.COLUMN_ANSWER + ") ON " +
+                "UNIQUE (" + FlashCardEntry.COLUMN_QUESTION + ", " + FlashCardEntry.COLUMN_ANSWER + ") ON " +
                 "CONFLICT IGNORE" +
                 " );";
 

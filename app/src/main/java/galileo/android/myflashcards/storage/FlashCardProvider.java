@@ -54,7 +54,7 @@ public class FlashCardProvider extends ContentProvider {
         // and query the database accordingly.
         Cursor retCursor;
         switch (sUriMatcher.match(uri)) {
-            // "to-do"
+            // flash card
             case FLASH_CARD: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
                         FlashCardEntry.TABLE_NAME,
@@ -67,7 +67,7 @@ public class FlashCardProvider extends ContentProvider {
                 );
                 break;
             }
-            // "tod-o by id/*"
+            // flash card by id
             case FLASH_CARD_ID: {
                 retCursor = mOpenHelper.getReadableDatabase().query(
                         FlashCardEntry.TABLE_NAME,
@@ -110,7 +110,7 @@ public class FlashCardProvider extends ContentProvider {
         switch (match) {
             case FLASH_CARD: {
                 long _id = db.insert(FlashCardEntry.TABLE_NAME, null, contentValues);
-                if ( _id > 0 )
+                if (_id > 0)
                     returnUri = FlashCardEntry.buildFlashCardUri(_id);
                 else
                     throw new android.database.SQLException("Failed to insert row into " + uri);

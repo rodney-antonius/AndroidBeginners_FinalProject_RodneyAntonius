@@ -16,7 +16,7 @@ public class FlashCardContract {
     public static final String CONTENT_AUTHORITY = "galileo.android.myflashcards";
     // Use CONTENT_AUTHORITY to create the base of all URI's which apps will use to contact
     // the content provider.
-    public static final Uri    BASE_CONTENT_URI  = Uri.parse("content://" + CONTENT_AUTHORITY);
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     // Possible paths (appended to base content URI for possible URI's)
     // For instance, content://com.example.android.sunshine.app/weather/ is a valid path for
     // looking at weather data. content://com.example.android.sunshine.app/givemeroot/ will fail,
@@ -24,7 +24,7 @@ public class FlashCardContract {
     // At least, let's hope not.  Don't be that dev, reader.  Don't be that dev.
     public static final String PATH_FLASH_CARD = "flash_card";
 
-    public static final String QUERY_EQUAL              = "=?";
+    public static final String QUERY_EQUAL = "=?";
 
 
     /*
@@ -41,8 +41,8 @@ public class FlashCardContract {
 
         public static final String WHERE_FLASH_CARD_ID = _ID + QUERY_EQUAL;
 
-        public static final Uri    CONTENT_URI       = BASE_CONTENT_URI.buildUpon().appendPath(PATH_FLASH_CARD).build();
-        public static final String CONTENT_TYPE      = "vnd.android.cursor.dir/" + CONTENT_AUTHORITY + "/" + PATH_FLASH_CARD;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_FLASH_CARD).build();
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/" + CONTENT_AUTHORITY + "/" + PATH_FLASH_CARD;
         public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/" + CONTENT_AUTHORITY + "/" + PATH_FLASH_CARD;
 
         public static Uri buildFlashCardUri(long id) {

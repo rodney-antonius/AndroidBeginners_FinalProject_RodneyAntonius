@@ -21,12 +21,13 @@ public class FlashCardDialogFragment extends DialogFragment {
     // Use this instance of the interface to deliver action events
     private AddFlashCardDialogListener mListener;
 
-    @Override public void onAttach(Context context) {
+    @Override
+    public void onAttach(Context context) {
         super.onAttach(context);
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
             mListener = (AddFlashCardDialogListener) context;
-        }catch (ClassCastException e) {
+        } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(context.toString() + " must implement AddFlashCardDialogListener");
         }

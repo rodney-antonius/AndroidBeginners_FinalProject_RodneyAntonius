@@ -7,7 +7,6 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.text.TextUtilsCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;

@@ -58,33 +58,28 @@ public class FlashCardActivity extends SingleFragmentActivity
 
     @Override
     public void onDialogPositiveClick(String question, String answer) {
+
+        int messageResId = R.string.card_empty_answer;
+
         if (!TextUtils.isEmpty(question) && !TextUtils.isEmpty(answer)) {
 
             getContentResolver().insert(FlashCardContract.FlashCardEntry.CONTENT_URI,
                     getFlashCardContentValues(question, answer));
 
-            Snackbar.make(findViewById(android.R.id.content), R.string.card_created_answer, Snackbar.LENGTH_LONG)
-                    .setAction("Close", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+            messageResId = R.string.card_created_answer;
 
-                        }
-                    })
-                    .setActionTextColor(getResources().getColor(R.color.red))
-                    .show();
-            Log.d(TAG, "New flash card added");
-        } else {
-            Snackbar.make(findViewById(android.R.id.content), R.string.card_empty_answer, Snackbar.LENGTH_LONG)
-                    .setAction("Close", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    })
-                    .setActionTextColor(getResources().getColor(R.color.red))
-                    .show();
-            Log.d(TAG, "Empty fields");
+            Log.d(TAG, "Card created successfully");
         }
+
+        Snackbar.make(findViewById(android.R.id.content), messageResId, Snackbar.LENGTH_LONG)
+                .setAction("Close", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .setActionTextColor(getResources().getColor(R.color.red))
+                .show();
 
 
     }

@@ -53,7 +53,6 @@ public class FlashCardCursorAdapter extends RecyclerView.Adapter<FlashCardCursor
     class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         private TextView questionTextView;
-        private int questionId = -1;
 
         public ViewHolder(View view) {
             super(view);
@@ -62,7 +61,6 @@ public class FlashCardCursorAdapter extends RecyclerView.Adapter<FlashCardCursor
         }
 
         private void bindView(Cursor cursor) {
-            questionId = cursor.getInt(cursor.getColumnIndex(FlashCardEntry._ID));
             String question = cursor.getString(cursor.getColumnIndex(FlashCardEntry.COLUMN_QUESTION));
             questionTextView.setText(question);
         }
